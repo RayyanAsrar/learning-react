@@ -39,7 +39,7 @@ function InputBox({
 
                 >
 
-                    {currencyOptions.map((option) => (<option key={option} value={option}>{option}</option>))} // check karo malik yu extra bracket lagai hue hain 
+                    {currencyOptions.map((option) => <option key={option} value={option}>{option}</option>)} 
 
                 </select>
             </div>

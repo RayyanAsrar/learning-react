@@ -3,11 +3,14 @@ import './App.css'
 import useCurrencyHooks from './hooks/useCurrencyHooks';
 import { useState } from 'react';
 function App() {
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState("");
     const [from, setFrom] = useState("usd");
     const [to, setTo] = useState("usd");
-    const [conversionRate, setConversionRate] = useState(0);
+    const [conversionRate, setConversionRate] = useState("");
     const currencyInfo = useCurrencyHooks(from);
+    // console.log(currencyInfo);
+    // console.log(currencyInfo[to]);
+
     const currencyOptions = Object.keys(currencyInfo);
 
     const swapCurrency = () => {
@@ -16,10 +19,10 @@ function App() {
     }
 
     const convert = () => {
-  if (currencyInfo[to]) {
-    setConversionRate((amount * currencyInfo[to]).toFixed(2));
-  }
-};
+        if (currencyInfo[to]) {
+            setConversionRate((amount * currencyInfo[to]).toFixed(2));
+        }
+    };
 
     return (
         <div
@@ -40,7 +43,7 @@ function App() {
                             <InputBox
                                 label="From"
                                 amount={amount}
-                                onCurrencyChange={(currency) => setFrom(currency)} // FIXED
+                                onCurrencyChange={(currency) => setFrom(currency)} 
                                 currencyOptions={currencyOptions}
                                 selectCurrency={from}
                                 onAmountChange={setAmount}
